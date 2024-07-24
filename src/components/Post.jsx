@@ -1,14 +1,13 @@
-const names = ['Dairan', 'Samir'];
+import classes from './Post.module.css'
+// los estilos se importan como objetos con propiedades al usar el module.css 
+// el module css es la manera en que se importa el css a los componentes.
 
-function Post() {
-
-    // choose a random name any time the page is up.
-    const chosenName = Math.random() > 0.5 ? names[0] : names[1];
+function Post(props) {
 
     return (
-    <div>
-         <p>{chosenName}</p> {/* Between those curly braces we can put any javascript expresion*/}
-        <p>React.js is an amazing framework.</p>
+    <div className={classes.post}>
+        <p className={classes.author}>{props.author}</p>
+        <p className={classes.text}>{props.body}</p>
     </div>
     );
 }
