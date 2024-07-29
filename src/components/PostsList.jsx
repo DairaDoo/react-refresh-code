@@ -1,35 +1,35 @@
 import Post from "./Post";
 import classes from "./PostsList.module.css";
 import NewPost from "./NewPost";
-import { useState } from "react";
 import Modal from "./Modal";
+import { useState } from "react";
 
-function PostsList() {
-  const [enteredBody, setEnteredBody] = useState("");
-  const [enteredAuthor, setEnteredAuthor] = useState("");
+function PostsList({ isPosting, onStopPosting }) {
 
-  // funcion para cambiar el estado del textArea
-  function bodyChangeHandler(event) {
-    setEnteredBody(event.target.value);
-  }
+  const [posts, setPosts] = useState([]);
 
-  function authorChangeHandler(event) {
-    setEnteredAuthor(event.target.value);
+  function addPostHandler(postData) {
+    setPosts((existingPosts) => [postData, ...existingPosts])
   }
 
   return (
     <>
-      <Modal>
-        <NewPost
-            onBodyChange={bodyChangeHandler}
-            onAuthorChange={authorChangeHandler}
-        />
-      </Modal>
-      <ul className={classes.posts}>
-        <Post author={enteredAuthor} body={enteredBody} />
-        <Post author="Pepe" body="I love React!" />
-        <Post author="Maria" body="React is the best!" />
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
+          <NewPost onCancel={onStopPosting} onAddPost={addPostHandler}/>
+        </Modal>
+      )} 
+      {posts.length > 0 && (
+        <ul className={classes.posts}>
+        {posts.map((post) => <Post key={post.body} author={post.author} body={post.body} />)}  {/* se mapea en cada post y crea uno por cada elemento en el array. */}
       </ul>
+      )}
+      {posts.length === 0 && (
+        <div style={{textAlign: 'center', color: 'white'}}>
+          <h2>There are no posts yet.</h2>
+          <p>Start adding some!</p>
+        </div>
+      )}
     </>
   );
 }
