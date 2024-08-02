@@ -1,10 +1,8 @@
 import Post from "./Post";
 import classes from "./PostsList.module.css";
-import NewPost from "./NewPost";
-import Modal from "./Modal";
 import { useState, useEffect } from "react";
 
-function PostsList({ isPosting, onStopPosting }) {
+function PostsList() {
 
   const [posts, setPosts] = useState([]);
   const [isFetching, setIsFetching] = useState(false); // estado para carga mientras se llaman los post (para retroalimentación).
@@ -35,11 +33,6 @@ function PostsList({ isPosting, onStopPosting }) {
 
   return (
     <>
-      {isPosting && (
-        <Modal onClose={onStopPosting}>
-          <NewPost onCancel={onStopPosting} onAddPost={addPostHandler}/>
-        </Modal>
-      )} 
       {!isFetching && posts.length > 0 && (
         <ul className={classes.posts}>
         {posts.map((post) => <Post key={post.body} author={post.author} body={post.body} />)}  {/* se mapea en cada post y crea uno por cada elemento en el array. */}
