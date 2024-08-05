@@ -1,13 +1,16 @@
 import classes from './Post.module.css'
+import { Link } from 'react-router-dom';
 // los estilos se importan como objetos con propiedades al usar el module.css 
 // el module css es la manera en que se importa el css a los componentes.
 
-function Post(props) {
+function Post({id, author, body}) {
 
     return (
     <li className={classes.post}>
-        <p className={classes.author}>{props.author}</p>
-        <p className={classes.text}>{props.body}</p>
+        <Link to={id}>
+            <p className={classes.author}>{author}</p>
+            <p className={classes.text}>{body}</p>
+        </Link>
     </li>
     );
 }

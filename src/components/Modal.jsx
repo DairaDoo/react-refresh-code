@@ -1,7 +1,7 @@
 import classes from "./Modal.module.css";
 import { useNavigate } from "react-router-dom";
 
-function Modal({ children}) {
+function Modal({ children }) {
 
   const navigate = useNavigate()
 
