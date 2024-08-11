@@ -1,3 +1,4 @@
+/* Estilos generales para pantallas grandes */
 .posts {
     list-style: none;
     max-width: 50rem;
@@ -7,4 +8,20 @@
     gap: 1rem;
     grid-template-columns: repeat(3, 30%);
     justify-content: center;
-}
+  }
+  
+  /* Estilos para pantallas medianas (tabletas) */
+  @media (max-width: 768px) {
+    .posts {
+      grid-template-columns: repeat(2, 45%);
+    }
+  }
+  
+  /* Estilos para pantallas pequeñas (móviles) */
+  @media (max-width: 480px) {
+    .posts {
+      grid-template-columns: 1fr;
+      max-width: 90%;
+    }
+  }
+  

@@ -1,37 +1,71 @@
+/* Estilos generales para pantallas grandes */
 .header {
-    /* padding: 2rem 10%; */
-    margin: 2rem 10%;
-    padding: 1rem;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #ece1fa;
+  margin: 2rem 10%;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ece1fa;
+}
+
+.logo {
+  font-size: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  color: #ece1fa;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #a990fb;
+  color: #2a2630;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #8c6cf7;
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+  .header {
+    margin: 1rem 5%;
+    flex-direction: column;
   }
-  
+
   .logo {
-    font-size: 2rem;
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    color: #ece1fa;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
-  
+
   .button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #a990fb;
-    color: #2a2630;
-    border: none;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
+    padding: 0.5rem 1rem;
   }
-  
-  .button:hover {
-    background-color: #8c6cf7;
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+  .header {
+    margin: 1rem 2%;
   }
+
+  .logo {
+    font-size: 1.25rem;
+    gap: 1rem;
+  }
+
+  .button {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+}

@@ -34,7 +34,7 @@ export default PostDetails;
 
 
 export async function loader({params}) {
-  const response = await fetch("http://localhost:3000/posts/" + params.postId); // get post id.
+  const response = await fetch("https://react-posts-backend-app.onrender.com/posts/" + params.postId); // get post id.
   const resData = await response.json(); // convert response to json.
   console.log(response);
 
