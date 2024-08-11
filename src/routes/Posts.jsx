@@ -9,10 +9,13 @@ function Posts() {
   const posts = useLoaderData(); // Obtener los datos cargados por el loader
 
   useEffect(() => {
-    if (posts && posts.length > 0) {
-      setIsLoading(false); // Ocultar loader cuando los datos se han cargado
-    }
-  }, [posts]);
+    // Simular un retraso de 20 segundos para ocultar el loader
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Ocultar el loader después de 20 segundos
+    }, 20000); // 20000 ms = 20 segundos
+
+    return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
+  }, []);
 
   if (isLoading) {
     return <Loading />; // Mostrar componente Loading mientras los datos se cargan
