@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from "react";
-import PostsList from "../components/PostsList";
-import { useLoaderData } from "react-router-dom";
-import Loading from "../components/Loading";
-import { Outlet } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import PostsList from '../components/PostsList';
+import { useLoaderData } from 'react-router-dom';
+import Loading from '../components/Loading';
+import { Outlet } from 'react-router-dom';
 
 function Posts() {
   const [isLoading, setIsLoading] = useState(true); // Estado para controlar el loader
   const posts = useLoaderData(); // Obtener los datos cargados por el loader
 
   useEffect(() => {
-    // Simular un retraso de 20 segundos para ocultar el loader
-    const timer = setTimeout(() => {
-      setIsLoading(false); // Ocultar el loader después de 20 segundos
-    }, 20000); // 20000 ms = 20 segundos
-
-    return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
-  }, []);
+    if (posts && posts.length > 0) {
+      setIsLoading(false); // Ocultar loader cuando los datos se han cargado
+    }
+  }, [posts]);
 
   if (isLoading) {
     return <Loading />; // Mostrar componente Loading mientras los datos se cargan
@@ -34,9 +31,9 @@ function Posts() {
 export default Posts;
 
 export async function loader() {
-  const response = await fetch("https://react-posts-backend-app.onrender.com/posts");
+  const response = await fetch('https://react-posts-backend-app.onrender.com/posts');
   if (!response.ok) {
-    throw new Error("No se pudieron cargar los posts.");
+    throw new Error('No se pudieron cargar los posts.');
   }
   const resData = await response.json();
   return resData.posts;
