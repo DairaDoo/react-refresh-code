@@ -4,20 +4,14 @@ import { useLoaderData } from "react-router-dom";
 import Loading from "../components/Loading";
 import { Outlet } from "react-router-dom";
 
-// Componente que renderiza la lista de posts con un loader mientras se cargan los datos
 function Posts() {
   const [isLoading, setIsLoading] = useState(true); // Estado para controlar el loader
   const posts = useLoaderData(); // Obtener los datos cargados por el loader
 
   useEffect(() => {
-    // Simular un pequeño retraso para asegurarnos de que el loading funcione
-    const timer = setTimeout(() => {
-      if (posts) {
-        setIsLoading(false); // Ocultar loader cuando los datos se han cargado
-      }
-    }, 1000);
-
-    return () => clearTimeout(timer); // Limpiar el timer en el desmontaje del componente
+    if (posts && posts.length > 0) {
+      setIsLoading(false); // Ocultar loader cuando los datos se han cargado
+    }
   }, [posts]);
 
   if (isLoading) {
