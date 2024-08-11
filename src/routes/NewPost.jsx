@@ -33,7 +33,8 @@ export async function action({ request }) {
   const formData = await request.formData();
   const postData = Object.fromEntries(formData); // {body: '...', author: '...'}
   console.log(postData);
-  fetch("http://localhost:8080/posts", {
+
+  const response = await fetch("http://localhost:3000/posts", {
     method: "POST",
     body: JSON.stringify(postData),
     headers: {
@@ -41,5 +42,12 @@ export async function action({ request }) {
     },
   });
 
-  return redirect('/'); // redirección al home page (/)
+  if (response.ok) {
+    // Si la respuesta es correcta, redirige a la página principal.
+    return redirect('/');
+  } else {
+    // Si algo sale mal, podrías manejarlo aquí.
+    console.error('Failed to create a new post.');
+  }
 }
+
