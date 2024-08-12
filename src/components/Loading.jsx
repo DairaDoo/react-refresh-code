@@ -27,7 +27,7 @@ export default function Loading() {
     >
       <CircularProgress color="secondary" size={80} />
       <Typography variant="h6" sx={{ mt: 2 }}>
-        Puede tardar un poco en cargar. Por favor, espere...
+        It may take a moment to load. Please wait...
       </Typography>
     </Box>
   );
