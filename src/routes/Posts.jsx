@@ -12,7 +12,7 @@ function Posts() {
     // Mantener el loader visible durante 14 segundos
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 14000);
+    }, 10000);
 
     // Limpiar el timer si se desmonta el componente
     return () => clearTimeout(timer);
