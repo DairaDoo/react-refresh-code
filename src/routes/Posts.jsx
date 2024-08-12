@@ -1,26 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PostsList from '../components/PostsList';
 import { useLoaderData } from 'react-router-dom';
-import Loading from '../components/Loading';
 import { Outlet } from 'react-router-dom';
 
 function Posts() {
-  const [isLoading, setIsLoading] = useState(true); // Estado para controlar el loader
   const posts = useLoaderData(); // Obtener los datos cargados por el loader
-
-  useEffect(() => {
-    // Mantener el loader visible durante 14 segundos
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 10000);
-
-    // Limpiar el timer si se desmonta el componente
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
 
   return (
     <>

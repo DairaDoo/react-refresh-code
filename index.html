@@ -7,7 +7,24 @@
     <title>InspireMe!</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="initial-loader" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(ellipse at top left, #7f50e4, #4c05d0);
+        color: white;
+        font-size: 20px;
+        font-family: Arial, sans-serif;
+      ">
+        Loading...
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
-  </body>
+  </body>  
 </html>
