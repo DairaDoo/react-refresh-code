@@ -22,11 +22,12 @@ export default function Loading() {
         zIndex: 9999,
         color: 'white',
         textAlign: 'center',
+        padding: 2,
       }}
     >
       <CircularProgress color="secondary" size={80} />
       <Typography variant="h6" sx={{ mt: 2 }}>
-        Cargando, por favor espere...
+        Puede tardar un poco en cargar. Por favor, espere...
       </Typography>
     </Box>
   );
