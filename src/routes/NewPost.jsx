@@ -34,7 +34,7 @@ export async function action({ request }) {
   const postData = Object.fromEntries(formData); // {body: '...', author: '...'}
   console.log(postData);
 
-  const response = await fetch("https://react-posts-backend-app.onrender.com/posts", {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/posts`, {
     method: "POST",
     body: JSON.stringify(postData),
     headers: {

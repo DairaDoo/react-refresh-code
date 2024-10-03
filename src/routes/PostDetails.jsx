@@ -33,10 +33,19 @@ function PostDetails() {
 export default PostDetails;
 
 
-export async function loader({params}) {
-  const response = await fetch("https://react-posts-backend-app.onrender.com/posts/" + params.postId); // get post id.
-  const resData = await response.json(); // convert response to json.
-  console.log(response);
+export async function loader({ params }) {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/posts/${params.postId}`);
+  
+  if (!response.ok) {
+    throw new Response('Error al obtener el post', { status: 404 });
+  }
 
-  return resData.post; // return data.
+  const resData = await response.json();
+  console.log('Post data:', resData); // Muestra los datos del post
+
+  return resData.post; // Asegúrate de que esto sea correcto
 }
+
+
+
+

@@ -19,7 +19,7 @@ function Posts() {
 export default Posts;
 
 export async function loader() {
-  const response = await fetch('https://react-posts-backend-app.onrender.com/posts');
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/posts`);
   if (!response.ok) {
     throw new Error('No se pudieron cargar los posts.');
   }
